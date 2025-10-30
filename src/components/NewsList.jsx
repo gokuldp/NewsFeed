@@ -3,10 +3,10 @@ import NewsCard from "./NewsCard";
 import Loading from "./Loading";
 import ErrorCard from "./ErrorCard";
 
-const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY||d236744b7319477280748cbc6356cfb7;
 const BASE = "https://newsapi.org/v2";
 
-export default function NewsList({ query, category, pageSize = 12 }) {
+export default function NewsList({ query, category, pageSize = 1 }) {
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(null);
