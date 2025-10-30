@@ -14,7 +14,7 @@ export default function NewsList({ query, category, pageSize = 12 }) {
   const [error, setError] = useState(null);
   const observerRef = useRef();
 
-  // Reset when query/category changes
+
   useEffect(() => {
     setArticles([]);
     setPage(1);
@@ -25,7 +25,7 @@ export default function NewsList({ query, category, pageSize = 12 }) {
     setLoading(true);
     setError(null);
     try {
-      // Use 'everything' when query provided, otherwise 'top-headlines' with category
+      
       const params = new URLSearchParams();
       params.append("apiKey", API_KEY);
       params.append("page", pageToFetch);
@@ -36,7 +36,7 @@ export default function NewsList({ query, category, pageSize = 12 }) {
         params.append("q", query);
         url = `${BASE}/everything?${params.toString()}`;
       } else {
-        // top-headlines requires country or sources, use country=us (or change as needed)
+  
         params.append("category", category);
         params.append("country", "us");
         url = `${BASE}/top-headlines?${params.toString()}`;
@@ -46,7 +46,6 @@ export default function NewsList({ query, category, pageSize = 12 }) {
       const data = await res.json();
       if (data.status !== "ok") throw new Error(data.message || "API error");
 
-      // append
       setArticles((prev) => (pageToFetch === 1 ? data.articles : [...prev, ...data.articles]));
       setTotalResults(data.totalResults);
     } catch (err) {
@@ -56,19 +55,18 @@ export default function NewsList({ query, category, pageSize = 12 }) {
     }
   }, [API_KEY, pageSize, query, category]);
 
-  // initial & page loads
+
   useEffect(() => {
     fetchArticles(page);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+ 
   }, [fetchArticles, page]);
 
-  // infinite scroll: observe last article
   const lastElementRef = useCallback((node) => {
     if (loading) return;
     if (observerRef.current) observerRef.current.disconnect();
     observerRef.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        // only load if more pages available
+   
         if (totalResults == null || articles.length < totalResults) {
           setPage((p) => p + 1);
         }
@@ -83,7 +81,7 @@ export default function NewsList({ query, category, pageSize = 12 }) {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {articles.map((a, idx) => {
-          // attach ref to last item
+
           if (idx === articles.length - 1) {
             return (
               <div key={a.url || idx} ref={lastElementRef}>
@@ -101,7 +99,7 @@ export default function NewsList({ query, category, pageSize = 12 }) {
 
       {loading && <Loading />}
 
-      {/* Fallback load-more if infinite scroll fails */}
+
       {!loading && totalResults != null && articles.length < totalResults && (
         <div className="mt-6 text-center">
           <button onClick={() => setPage((p) => p + 1)} className="px-4 py-2 border rounded">
@@ -110,7 +108,7 @@ export default function NewsList({ query, category, pageSize = 12 }) {
         </div>
       )}
 
-      {/* empty state */}
+     
       {!loading && articles.length === 0 && (
         <div className="py-12 text-center text-gray-600 dark:text-gray-300">You have reached the free API limit (100 results)</div>
       )}
