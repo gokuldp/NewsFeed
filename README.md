@@ -1,16 +1,61 @@
-# React + Vite
+# 📰 News Feed App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and stylish **React + Tailwind CSS** news feed application that fetches and displays live news articles from a free public API.  
+It supports **search**, **category filters**, **dark/light mode**, and **infinite scrolling** for a smooth and modern reading experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Demo
 
-## React Compiler
+🔗 **Live Demo:** [https://gokuldp.github.io/NewsFeed/](https://gokuldp.github.io/NewsFeed/)  
+*(Replace the link above with your actual GitHub Pages or Vercel/Netlify deployment link once deployed.)*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧠 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔍 **Search News** by keyword  
+- 🗂️ **Category Filters** – General, Technology, Sports, Health, etc.  
+- 🌓 **Dark/Light Theme Toggle**  
+- ♾️ **Infinite Scroll** to auto-load more articles  
+- ⚡ **Fast UI** using React Functional Components and Hooks  
+- 🎨 **Styled with Tailwind CSS**
+
+---
+
+## 🧩 Tech Stack
+
+| Tech | Description |
+|------|--------------|
+| **React.js (Vite)** | Frontend framework for building UI |
+| **Tailwind CSS** | Modern utility-first styling |
+| **NewsAPI.org** | Free public News API for live data |
+| **JavaScript (ES6+)** | Functional components and hooks |
+| **Vercel / GitHub Pages** | Deployment options |
+
+---
+
+## 🛠️ Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/gokuldp/NewsFeed.git
+   cd NewsFeed
+2. **Install dependencies**
+
+npm install
+
+
+3. **Create a .env file in the root folder and add your News API key:**
+
+VITE_NEWS_API_KEY=your_newsapi_key_here
+
+
+4. **Run the development server**
+
+npm run dev
+
+
+5. **Build for production**
+
+npm run build
